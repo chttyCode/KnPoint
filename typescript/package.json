@@ -1,0 +1,23 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "1. typescript 是什么    1. Typescript是由微软开发的一款开源的编程语言    2. Typescript是Javascript的超集，遵循最新的ES5/ES6规范。TypeScript扩展了Javascript语法    3. TypeScript更像后端Java、C#这样的面向对象语言可以让JS开发大型企业应用    4. 越来越多的项目是基于TS的，比如VSCode、Angular6、Vue3、React16    5. TS提供的类型系统可以帮助我们在写代码的时候提供更丰富的语法提示    6. 在创建前的编译阶段经过类型系统的检查，就可以避免很多线上的错误 2. TypeScript安装和编译    1. cnpm i typescript -g    2. tsc hello.ts",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^13.11.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6"
+  }
+}

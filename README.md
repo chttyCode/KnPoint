@@ -1,2 +1,3 @@
-# KnPoint
-Bits and pieces of knowledge
+# knPoints
+
+- typescript
