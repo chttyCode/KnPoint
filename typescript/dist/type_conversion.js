@@ -33,4 +33,15 @@ var p3 = {
     gender: 'male'
 };
 var p4 = { name: '1', age: 1 };
-var e = '1';
+// let e:E = '1';
+var e1 = 1;
+// let e:E = '1';
+var e2 = '1';
+//ReturnType 
+function getUserInfo() {
+    return { name: "", age: 10 };
+}
+var userA = {
+    name: "kongds",
+    age: 10
+};

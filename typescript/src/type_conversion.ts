@@ -2,14 +2,14 @@
  * 1.交叉类型
  *  交叉类型（Intersection Types）表示将多个类型合并为一个类型
  */
-interface Person {
+interface Person0 {
     name: string,
     speak(): void
 }
 interface Student {
     goSchool():void
 }
-type children = Person & Student;
+type children = Person0 & Student;
 let p: children = { name: 'tom', goSchool() { }, speak() { } };
 /**
  * 2.typeof
@@ -116,9 +116,29 @@ interface Person3{
   type Pick<T, K extends keyof T> = { [P in K]: T[P] }
   let p4:Pick<Person4,'name'|'age'>={name:'1',age:1}
 
-  //Exclude 
+  //Exclude https://github.com/Microsoft/TypeScript/blob/c48662c891ce810f5627a0f6a8594049cccceeb5/lib/lib.es5.d.ts#L1291
+
+  type _Exclude<T, U> = T extends U ? never : T;
+  type  E1 = Exclude<string|number,string>;
+  // let e:E = '1';
+  let e1:E1 = 1;
+
+  //Extract
   type _Extract<T, U> = T extends U ? T : never;
-  type  E = Extract<string|number,string>;
-  let e:E = '1';
+  type  E2= Extract<string|number,string>;
+  // let e:E = '1';
+  let e2:E2 = '1';
+
+  //ReturnType 
+
+  function getUserInfo() {
+    return { name: "", age: 10 };
+  }
+  type UserInfo = ReturnType<typeof getUserInfo>;
+
+  const userA: UserInfo = {
+    name: "kongds",
+    age: 10
+  };
   
 export {}
