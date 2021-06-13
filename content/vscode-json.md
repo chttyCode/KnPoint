@@ -9,14 +9,15 @@
 * 如何设置
     - 在settings.json 手动设置
 
-``` 
+``` js 
+// vscode settings
 
-``` JS
-// JavaScript
-"json.schemas": [{
+"json. schemas": [{
   "fileMatch": [
+
     "/.prettierrc.json"
-  ],
+
+  ], 
   "url": "https://json.schemastore.org/prettierrc"
 }]
 ```
