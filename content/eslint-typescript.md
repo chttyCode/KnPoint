@@ -140,24 +140,63 @@
 ```
 
 - committed
-
-```js
-{
-  "husky": {
-      "hooks": {
-          "pre-commit": "lint-staged"
+  - husk v6.0 有破坏性更新
+    - < v6.0 存在的问题
+      - husky 的工作方式:为了能够让用户设置任何类型的 git hooks 都能正常工作，husky 不得不创建所有类型的 git hooks。这样在 git 工作的每个阶段都会调用 husky 所设置的脚本，在这个脚本中 husky 会检查用户是否配置该 hook，如果有就运行用户配置的命令，如果没有就继续往下执行。
+      - 缺点
+        - 即使用户没有设置任何 git hook，husky 也向 git 中添加了所有类型的 git hook。
+        - husky 需要在 git hooks & husky 的配置中保持钩子同步
+    - v6.0
+      - 工作方式
+        - 新版的 husky 使用了从 git 2.9 开始引入的一个新功能 core.hooksPath。
+        - core.hooksPath 可以让你指定 git hooks 所在的目录而不是使用默认的 git hooks
+        - 使用 husky install 将 git hooks 的目录指定为.husky/
+        - 使用 husky add 命令向.husky/中添加 hook。
+      - 优点
+        - 只需要维护指定的.husky/一个地方，不存在保持同步钩子的问题
+      - 使用方式
+        - npm install -D husky
+        - 在 packgae.json 中添加 prepare 脚本,prepare 脚本会在 npm install（不带参数）之后自动执行,husky install 创建&指定 git hooks
+        ```js
+        {
+          "scripts": {
+            "prepare": "husky install"
+          }
+        }
+        ```
+        - 添加 git hooks 命令
+          - pre-commit
+          ```js
+            npx husky add .husky/pre-commit "npm run test"
+          ```
+          - commit-msg 在 v6.0.0husky 中使用$1替代$HUSKY_GIT_PARAMS。
+          ```js
+          npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+          ```
+  - < husky v6.0.0 配置
+    ```js
+    {
+      "husky": {
+          "hooks": {
+              "pre-commit": "lint-staged"
+          }
+      },
+      "lint-staged": {
+          "*.{js,ts,tsx}": [
+              "eslint --fix"
+          ]
       }
-  },
-  "lint-staged": {
-      "*.{js,ts,tsx}": [
-          "eslint --fix"
-      ]
-  }
-}
-```
+    }
+    ```
+
+> https://zhuanlan.zhihu.com/p/366786798
 
 > "eslint.trace.server": "verbose", eslint 日志
 
 > commit with the --no-verify flag. 可以跳过 lint 提交
 
 > on a continuous integration (CI) server: eslint '_/\*\*/_.{js,ts,tsx}' --quiet （依然需要 lint）
+
+```
+
+```
