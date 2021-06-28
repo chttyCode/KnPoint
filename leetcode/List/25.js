@@ -133,3 +133,21 @@ var reverseKGroup = function (head, k) {
   }
   return dummy.next;
 };
+
+var reverseKGroup = function (head, k) {
+  let count = 0;
+  let cur = head;
+  while (count < k) {
+    if (cur === null) return head;
+    count++;
+    cur = head.next;
+  }
+  let pre = reverseKGroup(cur.next);
+  while (count > 0) {
+    let next = head.next;
+    head.next = pre;
+    pre = head;
+    head = next;
+  }
+  return pre;
+};
