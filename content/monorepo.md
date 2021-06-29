@@ -43,7 +43,20 @@
     }
   ```
 
-  - 项目中维护 packages 目录
+  - lerna 使用
+    - 创建子包
+      - lerna create create-react-app
+    - 添加全局依赖
+      - lerna bootstrap
+  - yarn 使用
+    - 添加全局依赖
+      - yarn add chalk cross-spawn fs-extra --ignore-workspace-root-check
+    - 子项目添加依赖
+      - yarn workspace create-react-app add commander
+  - lerna vs yarn
+    - yarn 重点在包管理、处理依赖、建立软链
+    - lerna 重点在于多个项目管理和发布
+  - monorepo 怎么分包部署？？
 
 > https://segmentfault.com/a/1190000039157365
 
