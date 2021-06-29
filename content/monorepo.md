@@ -31,6 +31,8 @@
       - 给某个项目添加依赖 yarn workspace 项目名 add commander
     - 整个项目只有根目录下面会有一份 yarn.lock 文件。子项目也会被 link 到 node_modules 里面，这样就允许我们就可以直接用 import 导入对应的项目
     - yarn.lock 文件是自动生成的,也完全 Yarn 来处理.yarn.lock 锁定你安装的每个依赖项的版本，这可以确保你不会意外获得不良依赖
+    - 根目录添加workspaces,设置private
+    - 通过yarn install 链接项目依赖
 
   ```js
   {
