@@ -8,7 +8,7 @@
     - win+R 输入 %userprofile%
 - 删除用户信息和缓存信息
   - 方法一
-    - 在图示路径下，删除 Code 和 Visual Studio Code 文件夹，即可彻底删除用户信息和缓存信息
+    - 在图示路径下，C:\Users\k00557313\AppData\Roaming 删除 Code 和 Visual Studio Code 文件夹，即可彻底删除用户信息和缓存信息
     - 如果找不到AppData文件夹，应该是隐藏了，可以
       - 在文件夹中点击 查看 勾选 显示隐藏文件和文件夹 即可找到
       - 或者 win+S 搜索文件夹资源管理器选项，勾选 显示隐藏文件 即可
