@@ -52,3 +52,27 @@
   - 定义错误类型
   - 获取错误事件对象
   - 格式化页面 selector,定位错误元素
+- 白屏
+  - 类型
+    - 首页白屏
+    - 代码崩溃白屏
+  - 白屏监控方案
+    - 监控时机
+      - onerror
+      - mutation observer api
+      - 轮训
+    - DOM 检测
+      - elementsFromPoint
+      - 图像识别
+      - 基于 DOM 数据算法识别
+  - 采用基于 elementsFromPoint 的方案
+    - 注册监听
+      - 其中 state 值包含下面三个值
+        - loading: 表示文档正在加载中。
+        - interactive: 表示文档已完成加载，文档已被解析，但图像、样式表和框架等子资源仍在加载。
+        - complete: 表示文档和所有子资源已完成加载。如果状态变成这个，表明 load 事件即将触发
+        - https://developer.mozilla.org/zh-CN/docs/Web/API/Document/readystatechange_event
+        - https://www.zhangxinxu.com/wordpress/2019/10/document-readystate/
+    - 采点
+      - document.elementsFromPoint()，该函数返还在特定坐标点下的 HTML 元素数组。
+      - 采用十字交叉轴上的 18 个点
