@@ -1,18 +1,3 @@
-# 规划内容
-
-* typescript
-
-* node
-
-* webpack
-
-* react
-
-* CI/CD
-
-* leetcode
-
-
 # 规划
 
 * 项目技术
@@ -24,6 +9,7 @@
   * 工具链
 * 常用技术
   * react
+  * typescript
   * node
   * webpack
 * leetcode
