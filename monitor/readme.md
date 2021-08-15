@@ -1,5 +1,7 @@
 # 前端监控
 
+> [文档](https://chttycode.github.io/sys-doc/framework/monitor.html#%E6%8C%87%E6%A0%87%E5%88%86%E7%B1%BB)
+
 ## 监控的目的
 
 - 发现问题、产品决策
@@ -52,3 +54,13 @@
   - 定义错误类型
   - 获取错误事件对象
   - 格式化页面 selector,定位错误元素
+  - 资源加载异常踩坑（html-webpack-plugin）
+    - scriptLoading: 'blocking' ,以阻塞方式加载，监控脚本
+    - 在捕获阶段获取错误事件对象
+  - promise
+- 资源异常
+  - 判断 error 类型的属性
+  - 踩坑
+    - 在捕获阶段监听 error 事件
+
+> https://blog.fundebug.com/2019/08/17/how-to-monitor-resource-error/

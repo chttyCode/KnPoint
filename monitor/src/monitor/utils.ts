@@ -4,6 +4,7 @@ export interface LastEvent extends Event {
 let lastEvent: LastEvent;
 ["click", "touchstart", "mousedown", "keydown", "mouseover"].forEach(
   (eventType) => {
+    // @ts-ignore
     document.addEventListener(
       eventType,
       (event: LastEvent) => {
@@ -19,13 +20,14 @@ let lastEvent: LastEvent;
 export function getLastEvent(): LastEvent {
   return lastEvent;
 }
-export function getSelector(path) {
+export function getSelector(path?: any) {
+  if (!path) return;
   return path
     .reverse()
-    .filter((element) => {
+    .filter((element: any) => {
       return element !== document && element !== window;
     })
-    .map((element) => {
+    .map((element: any) => {
       let selector = "";
       if (element.id) {
         return `${element.nodeName.toLowerCase()}#${element.id}`;
@@ -37,4 +39,13 @@ export function getSelector(path) {
       return selector;
     })
     .join(" ");
+}
+
+// 注册监听 -白屏 https://chttycode.github.io/sys-doc/framework/monitor.html#%E7%9B%91%E6%8E%A7%E9%94%99%E8%AF%AF
+export function onload(callback: () => void) {
+  if (document.readyState === "complete") {
+    callback();
+  } else {
+    window.addEventListener("load", callback);
+  }
 }
